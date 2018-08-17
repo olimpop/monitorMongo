@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="refresh" content="3"/>
+
+    </h:head>
+    <h:body onload="#{monitorControlador.ObtenerDatosMongo()}">
+        <h1>Migracion Documentos  Mongo</h1>
+        <h:form >
+
+
+            <h:panelGrid columns="5">
+
+                <p:dataTable   id="tblCol" var="col1" value="#{monitorControlador.listaColeccionesProduccion}">
+                    <p:column headerText="Colecciones">
+                        <h:outputText value="#{col1.nombreColeccion}" />
+                    </p:column>
+
+                    <p:column headerText="Produccion">
+                        <h:outputText value="#{col1.numeroDocumentos}" />
+                    </p:column>
+                </p:dataTable>
+
+
+                <p:dataTable   id="tblColPrimario" var="col3" value="#{monitorControlador.listaColeccionesPrimario}">
+
+                    <p:column headerText="Primario URT">
+                        <h:outputText value="#{col3.numeroDocumentos}" />
+                    </p:column>
+
+                </p:dataTable>
+
+
+                <p:dataTable   id="tblColSecundario" var="col4" value="#{monitorControlador.listaColeccionesSecundario}">
+
+                    <p:column headerText="Secundario URT">
+                        <h:outputText value="#{col4.numeroDocumentos}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:dataTable   id="tblColSecunadarioL31" var="col5" value="#{monitorControlador.listaColeccionesSecundario}">
+
+                    <p:column headerText="Secundario L3_01 ">
+                        <h:outputText value="#{col5.numeroDocumentos}" />
+                    </p:column>
+                </p:dataTable>
+                
+                <p:dataTable   id="tblColSecunadarioL32" var="col6" value="#{monitorControlador.listaColeccionesSecundario}">
+
+                    <p:column headerText="Secundario L3_02 ">
+                        <h:outputText value="#{col6.numeroDocumentos}" />
+                    </p:column>
+                </p:dataTable>
+
+
+
+
+            </h:panelGrid>
+
+            <h:panelGrid columns="3">
+                <p:outputLabel value="Porcentaje Primario  : " />
+                <p:outputLabel value="#{monitorControlador.porcPrimario}" />
+                <p:outputLabel value="%" />
+            </h:panelGrid>
+            <h:panelGrid columns="3">
+                <p:outputLabel value="Porcentaje Secundario  : " />
+                <p:outputLabel value="#{monitorControlador.porcSecundario}" />
+                <p:outputLabel value="%" />
+            </h:panelGrid>
+
+
+
+
+        </h:form>
+    </h:body>
+</html>
